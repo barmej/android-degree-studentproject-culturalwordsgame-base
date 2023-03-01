@@ -1,45 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">كلمات تراثية</string>
-    <string name="share_the_question_with_friends">اسأل صديق</string>
-    <string name="share_question_text">شارك</string>
-    <string name="share_title_hint">أضف عنوان</string>
-    <string name="the_right_answer_is">الإجابة هي</string>
-    <string name="back_text">رجوع</string>
-    <string name="permission_title">توضيح</string>
-    <string name="permission_explanation">يحتاج التطبيق للحصول على صلاحية الكتابة على وحدة التخزين الخارجية لتخزين الصورة تمهيدا لاتاحة مشاركتها من خلال التطبيقات الأخرى</string>
-    <string name="permission_denied">لم يتم تنفيذ العملية بسبب عدم منح الصلاحيات اللازمة لتنفيذها</string>
+    <string name="app_name">Traditional words</string>
+    <string name="share_the_question_with_friends">Ask a friend</string>
+    <string name="share_question_text">Share</string>
+    <string name="share_title_hint">Add a title</string>
+    <string name="the_right_answer_is">The answer is</string>
+    <string name="back_text">Back</string>
+    <string name="permission_title">Illustrate</string>
+    <string name="permission_explanation">The application needs to have write permission to external storage to store the image in preparation for sharing it with other applications</string>
+    <string name="permission_denied">The operation was not executed because the necessary permissions were not granted</string>
+    <string name="change_lang_text">Change Language</string>
+    <string name="share_dialog_title">Share Via</string>
 
     <string-array name="answers">
-        <item>العقال</item>
-        <item>الفروة</item>
-        <item>السدو</item>
-        <item>الحناء</item>
-        <item>الدلة</item>
-        <item>الخف</item>
-        <item>الخنجر</item>
-        <item>النمرقة</item>
-        <item>القنديل / السراج</item>
-        <item>الفانوس</item>
-        <item>الطربوش</item>
-        <item>العمامة</item>
-        <item>الدشداشة</item>
+        <item>Egal</item>
+        <item>Scalp</item>
+        <item>Sado</item>
+        <item>Henna</item>
+        <item>Dalla</item>
+        <item>moccasin</item>
+        <item>Dagger</item>
+        <item>The Nimra</item>
+        <item>Al-Qandeel / Al-Osraj</item>
+        <item>The Lantern</item>
+        <item>Fez</item>
+        <item>Turban</item>
+        <item>Dishdasha</item>
     </string-array>
 
     <string-array name="answer_description">
-        <item>يوضع فوق الحطّة\الغترة لتثبيتها</item>
-        <item>مبطنة بالصوف، تلبس في الشتاء للوقاية من البرد</item>
-        <item>أحد أنواع النسيج البدوي التقليدي</item>
-        <item>تستخدم في صبغ الشعر واللحية، كما تستخدم أيضاً في تجميل الأيدي بالنسبة للنساء</item>
-        <item>الوعاء المستخدم في تقديم القهوة عند العرب</item>
-        <item>مصنوع من الجلد، يُلبس في القدم، اشتُهر قديماً عند العرب</item>
-        <item>سلاح أبيض صغير يوضع على الخصر</item>
-        <item>وسادة صغيرة يُتكأ عليها</item>
-        <item>اسم الاداة التي كانت تُستخدم للإضاءة قديما</item>
-        <item>أداة تُستخدم للإضاءة والزينة</item>
-        <item>قبعة حمراء اشتهرت في بلاد الشام ومصر والمغرب</item>
-        <item>غطاء يُكوّر فوق الرأس</item>
-        <item>ثوب عربي يُلبس بكثرة في دول الخليج</item>
+        <item>To be placed over the station/Ghutra to install</item>
+        <item>Lined with fleece, worn in winter to prevent cold</item>
+        <item>A type of traditional Bedouin weaving</item>
+        <item>Used for hair and beard dyeing, as well as beautifying hands for women</item>
+        <item>The bowl used for serving coffee among Arabs</item>
+        <item>made of leather</item>
+        <item>Waist Small White Weapon</item>
+        <item>small pillow to lean on</item>
+        <item>The name of the tool that was used for lighting in the past</item>
+        <item>Tools used for lighting and decoration</item>
+        <item>The red hat was popular in the Levant, Egypt and Morocco</item>
+        <item>ball cap</item>
+        <item>Arabian dress that is widely worn in the Gulf countries</item>
     </string-array>
+
+    <array name="languages">
+        <item>العربية</item>
+        <item>English</item>
+    </array>
 
 </resources>

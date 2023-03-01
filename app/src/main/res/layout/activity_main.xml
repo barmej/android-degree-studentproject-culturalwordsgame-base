@@ -41,6 +41,7 @@
         app:srcCompat="@drawable/icon_2" />
 
     <ImageButton
+        android:onClick="showAnswer"
         android:id="@+id/button_open_answer"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -50,6 +51,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
+        android:onClick="changeQuestion"
         android:id="@+id/button_change_question"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -61,6 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
+        android:onClick="showLanguageDialog"
         android:id="@+id/button_change_language"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -70,6 +73,7 @@
         app:srcCompat="@drawable/ic_language_white_24dp" />
 
     <ImageButton
+        android:onClick="share"
         android:id="@+id/button_share_question"
         android:layout_width="60dp"
         android:layout_height="60dp"

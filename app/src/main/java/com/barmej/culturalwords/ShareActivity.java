@@ -1,9 +1,17 @@
 package com.barmej.culturalwords;
 
-import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,19 +23,36 @@ import androidx.core.content.ContextCompat;
 public class ShareActivity extends AppCompatActivity {
 
     private static final int PERMISSIONS_WRITE_EXTERNAL_STORAGE = 123;
+    private EditText mShareEditText;
+    private int mImageResourceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
-
+        ImageView mImageView = findViewById(R.id.image_view_question);
+        mShareEditText = findViewById(R.id.edit_text_share_title);
+        mImageResourceId = getIntent().getIntExtra(MainActivity.BUNDLE_DRAWABLE_ID, -1);
+        mImageView.setImageResource(mImageResourceId);
     }
 
     /**
      * يجب عليك كتابة الكود الذي يقوم بمشاركة الصورة في هذه الدالة
      */
     private void shareImage() {
-        // كود مشاركة الصورة هنا
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), mImageResourceId);
+        Uri imageUri = null;
+        try {
+            imageUri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "share", null));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("image/jpeg");
+        sharingIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+        String title = mShareEditText.getText().toString();
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, title);
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_dialog_title)));
     }
 
     /**
@@ -35,11 +60,12 @@ public class ShareActivity extends AppCompatActivity {
      * <p>
      * وفي حال الحصول على الصلاحية تقوم باستدعاء دالة shareImage لمشاركة الصورة
      **/
-    private void checkPermissionAndShare() {
+    public void checkPermissionAndShare(View view) {
         // insertImage في النسخ من آندرويد 6 إلى آندرويد 9 يجب طلب الصلاحية لكي نتمكن من استخدام الدالة
         if (ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
+                != PackageManager.PERMISSION_GRANTED
+        && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
             // هنا لا يوجد صلاحية للتطبيق ويجب علينا طلب الصلاحية منه عن طريك الكود التالي
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -70,7 +96,7 @@ public class ShareActivity extends AppCompatActivity {
             } else {
                 // لا داعي لشرح فائدة الصلاحية للمستخدم ويمكننا طلب الصلاحية منه
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         PERMISSIONS_WRITE_EXTERNAL_STORAGE);
             }
 
@@ -87,8 +113,7 @@ public class ShareActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSIONS_WRITE_EXTERNAL_STORAGE) {
-            if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // تم منح الصلاحية من قبل المستخدم لذلك يمكننا مشاركة الصورة الآن
                 shareImage();
             } else {

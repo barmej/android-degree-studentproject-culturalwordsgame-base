@@ -37,7 +37,7 @@
         <EditText
             android:id="@+id/edit_text_share_title"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:ems="20"
             android:gravity="top"
             android:hint="@string/share_title_hint"
@@ -48,7 +48,7 @@
 
         <ImageView
             android:id="@+id/image_view_question"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
@@ -56,6 +56,7 @@
     </LinearLayout>
 
     <Button
+        android:onClick="checkPermissionAndShare"
         android:id="@+id/button_share_question"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
